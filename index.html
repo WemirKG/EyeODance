@@ -3,126 +3,265 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Danceverse — Purchase Successful</title>
-  <style>
-    :root{
-      --bg:#05050a;
-      --panel: rgba(255,255,255,.06);
-      --stroke: rgba(255,255,255,.14);
-      --text: rgba(245,245,255,.92);
-      --muted: rgba(245,245,255,.68);
-      --gold:#d7b85a;
-      --gold2:#f5d36b;
-      --radius:18px;
-      --shadow: 0 26px 80px rgba(0,0,0,.55);
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font: 14px/1.35 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      color: var(--text);
-      background:
-        radial-gradient(900px 700px at 20% 10%, rgba(168,85,247,.14), transparent 60%),
-        radial-gradient(900px 700px at 80% 20%, rgba(215,184,90,.12), transparent 58%),
-        linear-gradient(180deg, var(--bg), #0a0810);
-      min-height: 100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding: 18px;
-    }
-    .card{
-      width: min(820px, 96vw);
-      background: rgba(0,0,0,.45);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 18px;
-    }
-    .tag{
-      display:inline-flex;
-      gap:10px;
-      align-items:center;
-      padding:10px 12px;
-      border-radius:999px;
-      background: rgba(0,0,0,.35);
-      border:1px solid rgba(255,255,255,.12);
-      width: fit-content;
-    }
-    .dot{
-      width:10px;height:10px;border-radius:999px;
-      background: var(--gold2);
-      box-shadow: 0 0 0 6px rgba(215,184,90,.18);
-    }
-    h1{
-      margin: 14px 0 8px;
-      font-size: 34px;
-      letter-spacing: -.03em;
-      line-height: 1.05;
-    }
-    .gold{color: var(--gold2); text-shadow: 0 0 34px rgba(245,211,107,.22);}
-    p{margin: 8px 0; color: rgba(245,245,255,.72);}
-    .box{
-      margin-top: 14px;
-      background: var(--panel);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: var(--radius);
-      padding: 14px;
-    }
-    .btnRow{display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px;}
-    .btn{
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid rgba(215,184,90,.55);
-      background: linear-gradient(180deg, rgba(245,211,107,.22), rgba(215,184,90,.10));
-      cursor:pointer;
-      color: rgba(245,245,255,.92);
-      font-weight:950;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-    }
-    .btn.ghost{
-      border-color: rgba(255,255,255,.14);
-      background: rgba(255,255,255,.05);
-    }
-    .fine{margin-top: 10px; font-size: 12px; color: rgba(245,245,255,.60);}
-    code{
-      background: rgba(255,255,255,.06);
-      padding: 2px 6px;
-      border-radius: 8px;
-      border: 1px solid rgba(255,255,255,.10);
-      color: rgba(245,245,255,.86);
-    }
-  </style>
+  <title>DANCEVERSE — Black & Gold Future Cypher Marketplace</title>
+  <meta name="description" content="A futuristic Black-and-Gold dance marketplace. Sell premium dance videos ($50–$80) and onboard creators." />
+  <meta name="theme-color" content="#05050a" />
+  <link rel="stylesheet" href="./styles.css" />
 </head>
+
 <body>
-  <div class="card">
-    <div class="tag"><span class="dot" aria-hidden="true"></span> Purchase Confirmed</div>
-    <h1>Welcome to the <span class="gold">Danceverse</span>.</h1>
-    <p>Your payment was completed. If you used Stripe, you should also receive a receipt email.</p>
+  <div id="page" class="page night">
+    <header class="topbar">
+      <div class="brand">
+        <span class="mark" aria-hidden="true"></span>
+        <div class="brandText">
+          <div class="name">DANCEVERSE</div>
+          <div class="tag">Black & Gold • Future Cypher Marketplace</div>
+        </div>
+      </div>
 
-    <div class="box">
-      <p><b>Delivery (MVP on GitHub Pages):</b></p>
-      <p>
-        Static sites cannot securely verify payment and unlock content by themselves. For fully automated delivery, use
-        <b>Gumroad</b> or <b>Payhip</b> (they handle checkout + digital delivery), or upgrade Phase 2 with a backend + secure streaming.
-      </p>
-      <p class="fine">
-        If you’re using Stripe Payment Links today, set your product to deliver the content through:
-        (1) a digital product platform, or (2) an automated email flow (Zapier) that sends an access link after purchase.
-      </p>
-    </div>
+      <nav class="nav">
+        <a class="link" href="#market">Marketplace</a>
+        <a class="link" href="#creators">Creators</a>
+        <a class="link" href="#how">How it works</a>
+        <button class="pill" id="teachBtn" type="button">Teach on Danceverse</button>
+      </nav>
+    </header>
 
-    <div class="btnRow">
-      <a class="btn" href="./index.html#market">Back to Marketplace</a>
-      <a class="btn ghost" href="./index.html#creators">Become a Creator</a>
-    </div>
+    <section class="hero" id="top">
+      <canvas id="theatre" aria-hidden="true"></canvas>
 
-    <div class="fine">
-      If you later upgrade to Phase 2, the success URL will include a Stripe session ID like <code>?session_id=...</code> and your backend will verify it.
+      <div class="heroInner" id="heroSurface">
+        <div class="heroLeft">
+          <div class="badge">
+            <span class="pulse" aria-hidden="true"></span>
+            New-Age Dance Platform • Built for the Minds of the Future
+          </div>
+
+          <h1 class="headline">
+            Your movement is <span class="gold">intellectual property</span>.<br/>
+            Sell it like it matters.
+          </h1>
+
+          <p class="sub">
+            Premium dance lessons, breakdowns, and choreography drops — priced like mastery.
+            Buy a video, own the moment. Or become a creator and earn from your style.
+          </p>
+
+          <div class="ctaRow">
+            <a class="cta primary" href="#market">Enter the Marketplace</a>
+            <button class="cta ghost" id="applyBtn" type="button">Apply as a Creator</button>
+          </div>
+
+          <div class="typeRow" aria-live="polite">
+            <span class="typeLabel">Scene:</span>
+            <span class="typeText" id="typeText"></span>
+          </div>
+
+          <div class="controls">
+            <div class="controlCard">
+              <div class="controlHead">
+                <div class="controlTitle">Cypher Remix</div>
+                <div class="coords" id="coords">Grid: 0,0</div>
+              </div>
+
+              <div class="row">
+                <label class="label">Time</label>
+                <div class="seg">
+                  <button class="segBtn" data-time="Matinée" id="timeMatinee" type="button">Matinée</button>
+                  <button class="segBtn on" data-time="Night" id="timeNight" type="button">Night</button>
+                </div>
+              </div>
+
+              <div class="row">
+                <label class="label">Vibe</label>
+                <div class="seg">
+                  <button class="segBtn on" data-vibe="Smooth" type="button">Smooth</button>
+                  <button class="segBtn" data-vibe="Raw" type="button">Raw</button>
+                  <button class="segBtn" data-vibe="Legendary" type="button">Legendary</button>
+                </div>
+              </div>
+
+              <div class="row">
+                <label class="label">Intensity</label>
+                <input class="slider" id="intensity" type="range" min="0" max="1" step="0.01" value="0.62" />
+              </div>
+            </div>
+
+            <div class="proof">
+              <div class="proofCard">
+                <div class="proofNum">50–80</div>
+                <div class="proofTxt">Premium pricing per video</div>
+              </div>
+              <div class="proofCard">
+                <div class="proofNum">All Styles</div>
+                <div class="proofTxt">Hip-hop core, global rhythm</div>
+              </div>
+              <div class="proofCard">
+                <div class="proofNum">Creator-First</div>
+                <div class="proofTxt">Teach, sell, and build legacy</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="heroRight" aria-hidden="true">
+          <div class="stage">
+            <div class="curtain"></div>
+            <div class="stageCard">
+              <div class="stageTop">
+                <div class="stageTitle">Featured Drop</div>
+                <div class="stageChip" id="vibeChip">Smooth Mode</div>
+              </div>
+              <div class="stageBody">
+                <div class="mockVideo">
+                  <div class="scanline"></div>
+                  <div class="glowRing"></div>
+                  <div class="mockText">
+                    <div class="t1">CYBER CYPHER</div>
+                    <div class="t2">Gold Frequency • Motion Architecture</div>
+                  </div>
+                </div>
+                <div class="stageMeta">
+                  <div class="metaLine"><span>Drop Type</span><b>Masterclass</b></div>
+                  <div class="metaLine"><span>Access</span><b>Instant after purchase</b></div>
+                  <div class="metaLine"><span>Platform</span><b>GitHub Pages MVP</b></div>
+                </div>
+              </div>
+              <div class="stageBottom">
+                <a class="miniLink" href="#market">Browse drops →</a>
+                <span class="miniNote">Built to feel expensive.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="market">
+      <div class="sectionHead">
+        <h2>Marketplace</h2>
+        <p>Buy premium lessons, breakdowns, and choreography drops. You’re paying for clarity, not randomness.</p>
+      </div>
+
+      <div class="filters">
+        <div class="filter">
+          <div class="filterTop">
+            <div class="filterLabel">Find the right drop</div>
+            <div class="search" title="Search titles and tags">
+              <span class="searchIcon" aria-hidden="true">⌕</span>
+              <input id="search" placeholder="Search (e.g., popping, afro, cypher)" />
+            </div>
+          </div>
+
+          <div class="filterGrid">
+            <div>
+              <div class="filterLabel mb10">Style</div>
+              <div class="chips" id="styleChips"></div>
+            </div>
+            <div>
+              <div class="filterLabel mb10">Level</div>
+              <div class="chips" id="levelChips"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid" id="productGrid"></div>
+    </section>
+
+    <section class="section alt" id="how">
+      <div class="sectionHead">
+        <h2>How it works</h2>
+        <p>Designed to be simple for buyers and scalable for creators.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="stepNum">01</div>
+          <div class="stepTitle">Browse a drop</div>
+          <div class="stepTxt">Pick a style, level, and price. Everything is presented like a premium product.</div>
+        </div>
+        <div class="step">
+          <div class="stepNum">02</div>
+          <div class="stepTitle">Pay instantly</div>
+          <div class="stepTxt">Use Stripe Payment Links (fast) or Gumroad/Payhip (best delivery + access).</div>
+        </div>
+        <div class="step">
+          <div class="stepNum">03</div>
+          <div class="stepTitle">Access + level up</div>
+          <div class="stepTxt">MVP: redirect to success page. Phase 2: locked library + secure streaming.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="creators">
+      <div class="sectionHead">
+        <h2>Creators</h2>
+        <p>This is a platform for dancers with real skill. Apply to teach, publish drops, and earn with your talent.</p>
+      </div>
+
+      <div class="creatorRow">
+        <div class="creatorCard">
+          <h3>Teach on Danceverse</h3>
+          <p>We’re building a curated marketplace. Not noise. If you have mastery, we help you package it and sell it.</p>
+          <ul class="list">
+            <li>Hip-hop, Afro, contemporary, popping, krump, heels, ballroom, more</li>
+            <li>Phase 2 payouts via Stripe Connect (creator-first monetization)</li>
+            <li>Featured drops + cypher challenges for viral discovery</li>
+          </ul>
+          <button class="btn" id="applyBtn2" type="button">Apply as a Creator</button>
+        </div>
+
+        <div class="creatorCard glow">
+          <h3>Weekly Cypher Challenges (Viral Engine)</h3>
+          <p>The platform grows when the community competes and collaborates. Winners get featured placement.</p>
+          <div class="challenge">
+            <div class="chTop"><b>Challenge:</b> “Gold Frequency Groove”</div>
+            <div class="chBody">Post your 20–40s clip. Tag your style. Upload your breakdown. The cypher votes.</div>
+            <div class="chBottom">
+              <span class="pill2">Discovery</span>
+              <span class="pill2">Community</span>
+              <span class="pill2">Revenue</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footGrid">
+        <div>
+          <div class="footTitle">DANCEVERSE</div>
+          <div class="footTxt">A futuristic Black-and-Gold dance marketplace built for premium skill and community growth.</div>
+        </div>
+        <div>
+          <div class="footTitle">Site</div>
+          <a class="footLink" href="#market">Marketplace</a>
+          <a class="footLink" href="#creators">Creators</a>
+          <a class="footLink" href="#how">How it works</a>
+        </div>
+        <div>
+          <div class="footTitle">Policies</div>
+          <div class="footTxt">Add: Content Rules • Copyright • Refunds • Privacy</div>
+        </div>
+      </div>
+      <div class="footBottom">© <span id="year"></span> Danceverse. All rights reserved.</div>
+    </footer>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">
+    <div class="toastTitle" id="toastTitle">Notice</div>
+    <div class="toastBody" id="toastBody"></div>
+    <div class="toastRow">
+      <button class="tinyBtn ghost" id="toastClose" type="button">Close</button>
     </div>
   </div>
+
+  <!-- Modal Root -->
+  <div id="modalRoot"></div>
+
+  <script src="./app.js"></script>
 </body>
 </html>
