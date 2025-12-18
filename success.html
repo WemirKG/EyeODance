@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Danceverse — Purchase Successful</title>
+  <style>
+    :root{
+      --bg:#05050a;
+      --panel: rgba(255,255,255,.06);
+      --stroke: rgba(255,255,255,.14);
+      --text: rgba(245,245,255,.92);
+      --muted: rgba(245,245,255,.68);
+      --gold:#d7b85a;
+      --gold2:#f5d36b;
+      --radius:18px;
+      --shadow: 0 26px 80px rgba(0,0,0,.55);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font: 14px/1.35 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color: var(--text);
+      background:
+        radial-gradient(900px 700px at 20% 10%, rgba(168,85,247,.14), transparent 60%),
+        radial-gradient(900px 700px at 80% 20%, rgba(215,184,90,.12), transparent 58%),
+        linear-gradient(180deg, var(--bg), #0a0810);
+      min-height: 100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 18px;
+    }
+    .card{
+      width: min(820px, 96vw);
+      background: rgba(0,0,0,.45);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+    .tag{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      padding:10px 12px;
+      border-radius:999px;
+      background: rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.12);
+      width: fit-content;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:999px;
+      background: var(--gold2);
+      box-shadow: 0 0 0 6px rgba(215,184,90,.18);
+    }
+    h1{
+      margin: 14px 0 8px;
+      font-size: 34px;
+      letter-spacing: -.03em;
+      line-height: 1.05;
+    }
+    .gold{color: var(--gold2); text-shadow: 0 0 34px rgba(245,211,107,.22);}
+    p{margin: 8px 0; color: rgba(245,245,255,.72);}
+    .box{
+      margin-top: 14px;
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius);
+      padding: 14px;
+    }
+    .btnRow{display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px;}
+    .btn{
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(215,184,90,.55);
+      background: linear-gradient(180deg, rgba(245,211,107,.22), rgba(215,184,90,.10));
+      cursor:pointer;
+      color: rgba(245,245,255,.92);
+      font-weight:950;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .btn.ghost{
+      border-color: rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+    }
+    .fine{margin-top: 10px; font-size: 12px; color: rgba(245,245,255,.60);}
+    code{
+      background: rgba(255,255,255,.06);
+      padding: 2px 6px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.10);
+      color: rgba(245,245,255,.86);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="tag"><span class="dot" aria-hidden="true"></span> Purchase Confirmed</div>
+    <h1>Welcome to the <span class="gold">Danceverse</span>.</h1>
+    <p>Your payment was completed. If you used Stripe, you should also receive a receipt email.</p>
+
+    <div class="box">
+      <p><b>Delivery (MVP on GitHub Pages):</b></p>
+      <p>
+        Static sites cannot securely verify payment and unlock content by themselves. For fully automated delivery, use
+        <b>Gumroad</b> or <b>Payhip</b> (they handle checkout + digital delivery), or upgrade Phase 2 with a backend + secure streaming.
+      </p>
+      <p class="fine">
+        If you’re using Stripe Payment Links today, set your product to deliver the content through:
+        (1) a digital product platform, or (2) an automated email flow (Zapier) that sends an access link after purchase.
+      </p>
+    </div>
+
+    <div class="btnRow">
+      <a class="btn" href="./index.html#market">Back to Marketplace</a>
+      <a class="btn ghost" href="./index.html#creators">Become a Creator</a>
+    </div>
+
+    <div class="fine">
+      If you later upgrade to Phase 2, the success URL will include a Stripe session ID like <code>?session_id=...</code> and your backend will verify it.
+    </div>
+  </div>
+</body>
+</html>
